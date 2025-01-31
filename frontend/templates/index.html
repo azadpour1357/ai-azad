@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرسش از پایگاه داده مالیاتی</title>
+</head>
+<body>
+    <h1>ورود اطلاعات مالیاتی</h1>
+    <input type="text" id="question" placeholder="سوال خود را وارد کنید">
+    <button onclick="askQuestion()">ارسال</button>
+    <p id="answer"></p>
+
+    <script>
+        function askQuestion() {
+            let question = document.getElementById("question").value;
+            fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: question })
+            })
+            .then(response => response.json())
+            .then(data => { document.getElementById("answer").innerText = "پاسخ: " + data.answer; });
+        }
+    </script>
+</body>
+</html>

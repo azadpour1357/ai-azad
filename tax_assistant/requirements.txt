@@ -1,0 +1,9 @@
+flask
+flask-cors
+psycopg2
+pymongo
+pytesseract
+transformers
+openai
+PyPDF2
+Pillow
